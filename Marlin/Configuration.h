@@ -104,13 +104,13 @@
  *
  * :[-1, 0, 1, 2, 3, 4, 5, 6, 7]
  */
-#define SERIAL_PORT 0
+#define SERIAL_PORT -1
 
 /**
  * Select a secondary serial port on the board to use for communication with the host.
  * :[-1, 0, 1, 2, 3, 4, 5, 6, 7]
  */
-#define SERIAL_PORT_2 -1
+#define SERIAL_PORT_2 0
 
 /**
  * This setting determines the communication speed of the printer.
@@ -132,7 +132,7 @@
 #endif
 
 // Name displayed in the LCD "Ready" message and Info menu
-#define CUSTOM_MACHINE_NAME "Duplicator 6 Turbo"
+#define CUSTOM_MACHINE_NAME "Duplicator 6 Turbo "
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like https://www.uuidgenerator.net/version4
@@ -885,7 +885,8 @@
  *
  */
 //#define Z_MIN_PROBE_PIN P1_24 // SKR 1.3's Z Max pin (also MKS SGEN L)
-#define Z_MIN_PROBE_PIN P1_26 // SKR 1.4's E0 Detect Pin
+//#define Z_MIN_PROBE_PIN P0_10 // SKR 1.4's dedicated probe pin
+#define Z_MIN_PROBE_PIN P1_26 // SKR 1.4's E0 detect pin
 
 /**
  * Probe Type
@@ -906,7 +907,7 @@
  * A Fix-Mounted Probe either doesn't deploy or needs manual deployment.
  *   (e.g., an inductive probe or a nozzle-based probe-switch.)
  */
-//#define FIX_MOUNTED_PROBE
+#define FIX_MOUNTED_PROBE
 
 /**
  * Use the nozzle as the probe, as with a conductive
@@ -923,7 +924,7 @@
 /**
  * The BLTouch probe uses a Hall effect sensor and emulates a servo.
  */
-#define BLTOUCH
+//#define BLTOUCH
 
 /**
  * Pressure sensor with a BLTouch-like interface
@@ -1001,7 +1002,8 @@
  * Specify a Probe position as { X, Y, Z }
  */
 //#define NOZZLE_TO_PROBE_OFFSET { 0, 49.7, -1.8 } // BL Touch back mount
-#define NOZZLE_TO_PROBE_OFFSET { 31, -20, -1.2 } // BL Touch front mount (dot_bob)
+//#define NOZZLE_TO_PROBE_OFFSET { 31, -20, -1.2 } // BL Touch front mount (dot_bob)
+#define NOZZLE_TO_PROBE_OFFSET { 25.9, -20, -1.7 } // DCI Probe front mount
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1137,8 +1139,8 @@
 // @section machine
 
 // The size of the print bed
-#define X_BED_SIZE 175
-#define Y_BED_SIZE 175
+#define X_BED_SIZE 185
+#define Y_BED_SIZE 185
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
@@ -1328,7 +1330,7 @@
   //#define MESH_EDIT_GFX_OVERLAY   // Display a graphics overlay while editing the mesh
 
   #define MESH_INSET 1              // Set Mesh bounds as an inset region of the bed
-  #define GRID_MAX_POINTS_X 10      // Don't use more than 15 points per axis, implementation limited.
+  #define GRID_MAX_POINTS_X 12      // Don't use more than 15 points per axis, implementation limited.
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
   #define UBL_MESH_EDIT_MOVES_Z     // Sophisticated users prefer no movement of nozzle
@@ -1399,7 +1401,7 @@
 // - Move the Z probe (or nozzle) to a defined XY point before Z Homing.
 // - Prevent Z homing when the Z probe is outside bed area.
 //
-#define Z_SAFE_HOMING
+//#define Z_SAFE_HOMING
 
 #if ENABLED(Z_SAFE_HOMING)
   #define Z_SAFE_HOMING_X_POINT 0    // X point for Z homing when homing all axes (G28).
@@ -1959,7 +1961,7 @@
 // RepRapDiscount FULL GRAPHIC Smart Controller
 // https://reprap.org/wiki/RepRapDiscount_Full_Graphic_Smart_Controller
 //
-//#define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
+#define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
 
 //
 // ReprapWorld Graphical LCD
@@ -2096,7 +2098,6 @@
 //
 //#define OLED_PANEL_TINYBOY2
 //#define LCD_RESET_PIN LCD_PINS_D6
-#define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
 
 //
 // MKS OLED 1.3" 128 × 64 FULL GRAPHICS CONTROLLER
